@@ -1,5 +1,5 @@
-import 'package:dti/pages/drawer_widget.dart';
-import 'package:dti/sign_in/google_sign_in.dart';
+import 'package:dti/models/drawer_widget.dart';
+import 'package:dti/models/sign_in/google_sign_in.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';

@@ -1,7 +1,7 @@
-import 'package:dti/cart_pages/purchase.dart';
-import 'package:dti/cart_pages/total_controller.dart';
-import 'package:dti/pages/drawer_widget.dart';
-import 'package:dti/sign_in/google_sign_in.dart';
+import 'package:dti/pages/purchase.dart';
+import 'package:dti/controllers/total_controller.dart';
+import 'package:dti/models/drawer_widget.dart';
+import 'package:dti/models/sign_in/google_sign_in.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
@@ -18,7 +18,7 @@ class Cart extends StatefulWidget {
 }
 
 class _CartState extends State<Cart> {
-
+  final database = FirebaseDatabase.instance.reference();
   final user = FirebaseAuth.instance.currentUser!;
   late Query _ref;
 
@@ -103,6 +103,8 @@ class _CartState extends State<Cart> {
                                               Navigator.push(
                                                   context,
                                                   MaterialPageRoute(
+
+
                                                     builder: (context) => const Purchase(),
                                                   ));
                                             },
@@ -132,6 +134,7 @@ class _CartState extends State<Cart> {
   }
   /// Build para fazer os Carts**/
   Widget _buildEquipmentItem({required Map equipment}) {
+    final yourCart = database.child('${user.displayName.toString()} cart');
     return Container(
       padding: const EdgeInsets.all(4),
       height: 112,
@@ -169,7 +172,8 @@ class _CartState extends State<Cart> {
                   icon: const Icon(Icons.remove_circle),
                   color: Colors.red,
                   onPressed: () {
-
+                    yourCart.child("${equipment["equipment"]}").remove();
+                    Provider.of<TotalController>(context, listen: false).zerarTotal(int.parse(equipment["price_day"]));
                   },
                 ),
                 const SizedBox(width: 5,),

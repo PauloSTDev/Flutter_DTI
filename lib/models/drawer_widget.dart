@@ -1,7 +1,7 @@
-import 'package:dti/cart_pages/cart.dart';
-import 'package:dti/pages/read_examples.dart';
+import 'package:dti/models/cart.dart';
+import 'package:dti/models/read_examples.dart';
 import 'package:dti/pages/write_examples.dart';
-import 'package:dti/sign_in/logged_in_widget.dart';
+import 'package:dti/pages/logged_in_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';

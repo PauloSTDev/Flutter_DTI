@@ -1,5 +1,5 @@
 import 'dart:math';
-import 'package:dti/pages/read_examples.dart';
+import 'package:dti/models/read_examples.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 

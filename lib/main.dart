@@ -1,6 +1,6 @@
-import 'package:dti/cart_pages/total_controller.dart';
-import 'package:dti/pages/read_examples.dart';
-import 'package:dti/sign_in/google_sign_in.dart';
+import 'package:dti/controllers/total_controller.dart';
+import 'package:dti/models/read_examples.dart';
+import 'package:dti/models/sign_in/google_sign_in.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'pages/login.dart';

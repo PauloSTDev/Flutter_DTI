@@ -17,8 +17,9 @@ class TotalController extends ChangeNotifier{
     _quantity = _quantity + quantidade;
     notifyListeners();
   }
-  zerarTotal() {
-    _total = 0;
+  zerarTotal(int diminuir) {
+    _total = total - diminuir;
+    notifyListeners();
   }
 
 }

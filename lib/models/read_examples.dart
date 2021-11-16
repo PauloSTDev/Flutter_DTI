@@ -1,14 +1,13 @@
 import 'dart:async';
-import 'dart:ffi';
-import 'package:dti/cart_pages/cart.dart';
-import 'package:dti/cart_pages/total_controller.dart';
-import 'package:dti/pages/drawer_widget.dart';
+import 'package:dti/models/cart.dart';
+import 'package:dti/controllers/total_controller.dart';
+import 'package:dti/models/drawer_widget.dart';
 import 'package:dti/pages/write_examples.dart';
-import 'package:dti/sign_in/logged_in_widget.dart';
+import 'package:dti/pages/logged_in_widget.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/ui/firebase_animated_list.dart';
 import 'package:provider/provider.dart';
-import 'package:dti/sign_in/google_sign_in.dart';
+import 'package:dti/models/sign_in/google_sign_in.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_database/firebase_database.dart';
 
@@ -85,7 +84,9 @@ class _ReadExamplesState extends State<ReadExamples> {
                     yourCart.child("${equipment["equipment"]}").update(produto)
                         .then((_) => print("Order has been written!"))
                         .catchError((error) => print("You got an error $error"));
-                    ///setState(() => activeButton = false);
+                    Container(
+
+                    );
                   },
                 ),
               ],

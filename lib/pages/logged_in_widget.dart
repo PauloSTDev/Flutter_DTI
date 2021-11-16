@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'google_sign_in.dart';
+import 'package:dti/models/sign_in/google_sign_in.dart';
 import 'package:provider/provider.dart';
 
 class LoggedInWidget extends StatefulWidget {
