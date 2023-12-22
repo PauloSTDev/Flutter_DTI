@@ -1,6 +1,5 @@
 import 'package:dti/models/drawer_widget.dart';
 import 'package:dti/models/sign_in/google_sign_in.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -16,17 +15,20 @@ class Purchase extends StatelessWidget {
         foregroundColor: Colors.black,
         backgroundColor: Colors.blueAccent,
         actions: [
-          FlatButton(
-            color: Colors.blueAccent,
-              textColor: Colors.white,
+          TextButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+              textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.white)),
+            ),
             child: const Icon(
               Icons.logout,
               color: Colors.black,
-              size: 20,),
-              onPressed: () {
+              size: 20,
+            ),
+            onPressed: () {
               final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
               provider.logout();
-              },
+            },
           ),
         ],
       ),
@@ -35,14 +37,12 @@ class Purchase extends StatelessWidget {
         color: Colors.white,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             Text(
               'Compra efetuada com sucesso!',
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 20),
+              style: TextStyle(color: Colors.black, fontSize: 20),
             ),
-            const SizedBox(height: 8),
+            SizedBox(height: 8),
           ],
         ),
       ),

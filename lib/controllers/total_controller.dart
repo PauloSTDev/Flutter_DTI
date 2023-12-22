@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 
-class TotalController extends ChangeNotifier{
-
+class TotalController extends ChangeNotifier {
   int _total = 0;
   int _quantity = 0;
 
@@ -17,9 +16,9 @@ class TotalController extends ChangeNotifier{
     _quantity = _quantity + quantidade;
     notifyListeners();
   }
+
   zerarTotal(int diminuir) {
     _total = total - diminuir;
     notifyListeners();
   }
-
 }

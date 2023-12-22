@@ -24,16 +24,13 @@ class _ReadExamplesState extends State<ReadExamples> {
   final database = FirebaseDatabase.instance.reference();
   final user = FirebaseAuth.instance.currentUser!;
 
-  StreamSubscription ?_productStream;
+  StreamSubscription? _productStream;
 
   @override
   void initState() {
     super.initState();
-    _ref = FirebaseDatabase.instance.reference()
-    .child('products')
-    .orderByChild('name');
+    _ref = FirebaseDatabase.instance.reference().child('products').orderByChild('name');
   }
-
 
   /// Build para fazer os Carts**/
   Widget _buildEquipmentItem({required Map equipment}) {
@@ -48,45 +45,64 @@ class _ReadExamplesState extends State<ReadExamples> {
           children: [
             Row(
               children: [
-                const SizedBox(width: 5,),
-              const Icon(Icons.wallet_travel,
-                color: Colors.black,
-                size: 20,),
-              const SizedBox(width: 5,),
-              Text(equipment["equipment"], style: const TextStyle(fontSize: 16,
-                  color: Colors.black,//Theme.of(context).primaryColor,
-                  fontWeight: FontWeight.w600),),
+                const SizedBox(
+                  width: 5,
+                ),
+                const Icon(
+                  Icons.wallet_travel,
+                  color: Colors.black,
+                  size: 20,
+                ),
+                const SizedBox(
+                  width: 5,
+                ),
+                Text(
+                  equipment["equipment"],
+                  style: const TextStyle(
+                      fontSize: 16,
+                      color: Colors.black, //Theme.of(context).primaryColor,
+                      fontWeight: FontWeight.w600),
+                ),
               ],
             ),
-            const SizedBox(height: 1,),
+            const SizedBox(
+              height: 1,
+            ),
             Row(
               children: [
-                const SizedBox(width: 10,),
-                const Icon(Icons.monetization_on,
+                const SizedBox(
+                  width: 10,
+                ),
+                const Icon(
+                  Icons.monetization_on,
                   color: Colors.green,
-                  size: 20,),
-                const SizedBox(width: 6,),
-                Text("R\$ "+equipment["price_day"].toString()+ ",00 por dia",
-                  style: const TextStyle(fontSize: 16,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w600),),
-                const SizedBox(width: 110,),
+                  size: 20,
+                ),
+                const SizedBox(
+                  width: 6,
+                ),
+                Text(
+                  "R\$ " + equipment["price_day"].toString() + ",00 por dia",
+                  style: const TextStyle(fontSize: 16, color: Colors.black, fontWeight: FontWeight.w600),
+                ),
+                const SizedBox(
+                  width: 110,
+                ),
                 IconButton(
                   icon: const Icon(Icons.add_shopping_cart),
                   color: Colors.green,
-                  onPressed:() {
+                  onPressed: () {
                     Provider.of<TotalController>(context, listen: false).totalNumber(int.parse(equipment["price_day"]));
                     final produto = <String, dynamic>{
-                      'equipment':'${equipment["equipment"]}',
+                      'equipment': '${equipment["equipment"]}',
                       'price_day': '${equipment["price_day"]}',
-                      'quantity' : 1,
+                      'quantity': 1,
                     };
-                    yourCart.child("${equipment["equipment"]}").update(produto)
-                        .then((_) => print("Order has been written!"))
-                        .catchError((error) => print("You got an error $error"));
-                    Container(
-
-                    );
+                    yourCart
+                        .child("${equipment["equipment"]}")
+                        .update(produto)
+                        .then((_) => print("Order has been written!"));
+                    Container();
                   },
                 ),
               ],
@@ -101,35 +117,35 @@ class _ReadExamplesState extends State<ReadExamples> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        drawer: const DrawerWidget(),
-        appBar: AppBar(
-
-          title: const Text('Equipamentos'),
-          foregroundColor: Colors.black,
-          backgroundColor: Colors.blueAccent,
-          actions: [
-            FlatButton(
-              color: Colors.blueAccent,
-              textColor: Colors.white,
-              child: const Icon(
-                Icons.logout,
-                color: Colors.black,
-                size: 20,),
-              onPressed: () {
-                final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
-                provider.logout();
-              },
+      drawer: const DrawerWidget(),
+      appBar: AppBar(
+        title: const Text('Equipamentos'),
+        foregroundColor: Colors.black,
+        backgroundColor: Colors.blueAccent,
+        actions: [
+          TextButton(
+            style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+              textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.white)),
             ),
-          ],
-        ),
-
-        body: FirebaseAnimatedList(
-        query: _ref,
-        itemBuilder: (BuildContext context, DataSnapshot snapshot,
-            Animation<double> animation, int index) {
-          Map equipment = snapshot.value;
-          return _buildEquipmentItem(equipment: equipment);
-        }),
+            child: const Icon(
+              Icons.logout,
+              color: Colors.black,
+              size: 20,
+            ),
+            onPressed: () {
+              final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
+              provider.logout();
+            },
+          ),
+        ],
+      ),
+      body: FirebaseAnimatedList(
+          query: _ref,
+          itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
+            Map equipment = snapshot.value;
+            return _buildEquipmentItem(equipment: equipment);
+          }),
       /**floatingActionButton: FloatingActionButton(
         onPressed: () => Navigator.push(
             context,
@@ -145,14 +161,16 @@ class _ReadExamplesState extends State<ReadExamples> {
 
       backgroundColor: Colors.blueAccent,
       persistentFooterButtons: <Widget>[
-
-        FlatButton(
-          color: Colors.blueAccent,
-          textColor: Colors.white,
+        TextButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+            textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.white)),
+          ),
           child: const Icon(
             Icons.engineering,
             color: Colors.black,
-            size: 20,),
+            size: 20,
+          ),
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
@@ -160,14 +178,19 @@ class _ReadExamplesState extends State<ReadExamples> {
             ),
           ),
         ),
-        const SizedBox(width: 7,),
-        FlatButton(
-          color: Colors.blueAccent,
-          textColor: Colors.white,
+        const SizedBox(
+          width: 7,
+        ),
+        TextButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+            textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.white)),
+          ),
           child: const Icon(
             Icons.shop,
             color: Colors.black,
-            size: 20,),
+            size: 20,
+          ),
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
@@ -175,14 +198,19 @@ class _ReadExamplesState extends State<ReadExamples> {
             ),
           ),
         ),
-        const SizedBox(width: 7, ),
-        FlatButton(
-          color: Colors.blueAccent,
-          textColor: Colors.white,
+        const SizedBox(
+          width: 7,
+        ),
+        TextButton(
+          style: ButtonStyle(
+            backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+            textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.white)),
+          ),
           child: const Icon(
             Icons.shopping_cart,
             color: Colors.black,
-            size: 20,),
+            size: 20,
+          ),
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
@@ -190,7 +218,9 @@ class _ReadExamplesState extends State<ReadExamples> {
             ),
           ),
         ),
-        const SizedBox(width: 7, ),
+        const SizedBox(
+          width: 7,
+        ),
       ],
     );
   }
@@ -200,6 +230,4 @@ class _ReadExamplesState extends State<ReadExamples> {
     _productStream?.cancel();
     super.deactivate();
   }
-
-
 }

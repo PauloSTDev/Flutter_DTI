@@ -9,9 +9,7 @@ class Login extends StatefulWidget {
   _LoginScreen3State createState() => _LoginScreen3State();
 }
 
-class _LoginScreen3State extends State<Login>
-    with TickerProviderStateMixin {
-
+class _LoginScreen3State extends State<Login> with TickerProviderStateMixin {
   //The code is commented because instead of manual scrolling with animation,
   //Now PageView is being used
 
@@ -145,10 +143,7 @@ class _LoginScreen3State extends State<Login>
               children: const <Widget>[
                 Text(
                   "DTI My Equipment Control",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold),
+                  style: TextStyle(color: Colors.black, fontSize: 20.0, fontWeight: FontWeight.bold),
                 ),
               ],
             ),
@@ -160,10 +155,12 @@ class _LoginScreen3State extends State<Login>
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0)),
-                    color: Colors.white,
+                  child: TextButton(
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all(Colors.white),
+                    ),
+                    // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+
                     onPressed: () => gotoLogin(),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -177,9 +174,7 @@ class _LoginScreen3State extends State<Login>
                             child: Text(
                               "LOGIN",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -197,10 +192,12 @@ class _LoginScreen3State extends State<Login>
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0)),
-                    color: Colors.white,
+                  child: TextButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+                        textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.white))),
+                    // shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30.0)),
+
                     onPressed: () => gotoSignup(),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -214,9 +211,7 @@ class _LoginScreen3State extends State<Login>
                             child: Text(
                               "SIGN IN",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -250,14 +245,12 @@ class _LoginScreen3State extends State<Login>
             padding: const EdgeInsets.all(100.0),
             child: const Center(
               child: Icon(
-
                 Icons.account_circle_rounded,
                 color: Colors.black,
                 size: 50.0,
               ),
             ),
           ),
-
           Row(
             children: const <Widget>[
               Expanded(
@@ -281,10 +274,7 @@ class _LoginScreen3State extends State<Login>
             alignment: Alignment.center,
             decoration: const BoxDecoration(
               border: Border(
-                bottom: BorderSide(
-                    color: Colors.black,
-                    width: 0.5,
-                    style: BorderStyle.solid),
+                bottom: BorderSide(color: Colors.black, width: 0.5, style: BorderStyle.solid),
               ),
             ),
             padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -332,10 +322,7 @@ class _LoginScreen3State extends State<Login>
             alignment: Alignment.center,
             decoration: const BoxDecoration(
               border: Border(
-                bottom: BorderSide(
-                    color: Colors.black,
-                    width: 0.5,
-                    style: BorderStyle.solid),
+                bottom: BorderSide(color: Colors.black, width: 0.5, style: BorderStyle.solid),
               ),
             ),
             padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -365,7 +352,10 @@ class _LoginScreen3State extends State<Login>
             children: <Widget>[
               Padding(
                 padding: const EdgeInsets.only(right: 20.0),
-                child: FlatButton(
+                child: TextButton(
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+                  ),
                   child: const Text(
                     "Forgot Password?",
                     style: TextStyle(
@@ -387,11 +377,14 @@ class _LoginScreen3State extends State<Login>
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    color: Colors.blueAccent,
+                  child: TextButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+                        textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.black))),
+
+                    // shape: RoundedRectangleBorder(
+                    //   borderRadius: BorderRadius.circular(30.0),
+                    // ),
                     onPressed: () => {},
                     child: Container(
                       padding: const EdgeInsets.symmetric(
@@ -405,9 +398,7 @@ class _LoginScreen3State extends State<Login>
                             child: Text(
                               "LOGIN",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -453,11 +444,14 @@ class _LoginScreen3State extends State<Login>
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: FlatButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                    color: Colors.red,
+                  child: TextButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+                        textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.black))),
+                    // shape: RoundedRectangleBorder(
+                    //   borderRadius: BorderRadius.circular(30.0),
+                    // ),
+
                     onPressed: () {
                       final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
                       provider.googleLogin();
@@ -474,9 +468,7 @@ class _LoginScreen3State extends State<Login>
                             child: Text(
                               "GOOGLE",
                               textAlign: TextAlign.center,
-                              style: TextStyle(
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.bold),
+                              style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                             ),
                           ),
                         ],
@@ -540,10 +532,7 @@ class _LoginScreen3State extends State<Login>
               alignment: Alignment.center,
               decoration: const BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(
-                      color: Colors.black,
-                      width: 0.5,
-                      style: BorderStyle.solid),
+                  bottom: BorderSide(color: Colors.black, width: 0.5, style: BorderStyle.solid),
                 ),
               ),
               padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -565,11 +554,9 @@ class _LoginScreen3State extends State<Login>
                 ],
               ),
             ),
-
             const Divider(
               height: 24.0,
             ),
-
             Row(
               children: const <Widget>[
                 Expanded(
@@ -593,10 +580,7 @@ class _LoginScreen3State extends State<Login>
               alignment: Alignment.center,
               decoration: const BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(
-                      color: Colors.black,
-                      width: 0.5,
-                      style: BorderStyle.solid),
+                  bottom: BorderSide(color: Colors.black, width: 0.5, style: BorderStyle.solid),
                 ),
               ),
               padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -644,10 +628,7 @@ class _LoginScreen3State extends State<Login>
               alignment: Alignment.center,
               decoration: const BoxDecoration(
                 border: Border(
-                  bottom: BorderSide(
-                      color: Colors.black,
-                      width: 0.5,
-                      style: BorderStyle.solid),
+                  bottom: BorderSide(color: Colors.black, width: 0.5, style: BorderStyle.solid),
                 ),
               ),
               padding: const EdgeInsets.only(left: 0.0, right: 10.0),
@@ -677,7 +658,7 @@ class _LoginScreen3State extends State<Login>
               children: <Widget>[
                 Padding(
                   padding: const EdgeInsets.only(right: 20.0),
-                  child: FlatButton(
+                  child: TextButton(
                     child: const Text(
                       "Already have an account?",
                       style: TextStyle(
@@ -699,11 +680,14 @@ class _LoginScreen3State extends State<Login>
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: FlatButton(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      color: Colors.blueAccent,
+                    child: TextButton(
+                      style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+                          textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.black))),
+                      // shape: RoundedRectangleBorder(
+                      //   borderRadius: BorderRadius.circular(30.0),
+                      // ),
+
                       onPressed: () => {},
                       child: Container(
                         padding: const EdgeInsets.symmetric(
@@ -717,9 +701,7 @@ class _LoginScreen3State extends State<Login>
                               child: Text(
                                 "SIGN UP",
                                 textAlign: TextAlign.center,
-                                style: TextStyle(
-                                    color: Colors.black,
-                                    fontWeight: FontWeight.bold),
+                                style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
                               ),
                             ),
                           ],

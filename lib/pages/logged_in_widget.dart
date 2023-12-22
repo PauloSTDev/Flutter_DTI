@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:dti/models/sign_in/google_sign_in.dart';
@@ -23,9 +22,10 @@ class _LoggedInWidgetState extends State<LoggedInWidget> {
         title: const Text('Perfil'),
         centerTitle: true,
         actions: [
-          FlatButton(
-            color: Colors.blueAccent,
-            textColor: Colors.black,
+          TextButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
+                textStyle: MaterialStateProperty.all(const TextStyle(color: Colors.black))),
             child: const Text('Logout'),
             onPressed: () {
               final provider = Provider.of<GoogleSignInProvider>(context, listen: false);
@@ -47,22 +47,17 @@ class _LoggedInWidgetState extends State<LoggedInWidget> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Name: '+ user.displayName!,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 20),
+              'Name: ' + user.displayName!,
+              style: const TextStyle(color: Colors.black, fontSize: 20),
             ),
             const SizedBox(height: 8),
             Text(
-              'Email: '+user.email!,
-              style: const TextStyle(
-                  color: Colors.black,
-                  fontSize: 20),
+              'Email: ' + user.email!,
+              style: const TextStyle(color: Colors.black, fontSize: 20),
             ),
           ],
         ),
       ),
     );
-
   }
 }
